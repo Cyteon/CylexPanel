@@ -7,5 +7,11 @@ export const GET: RequestHandler = async () => {
 
 	const instance = await Instance.findOne({});
 
-	return new Response(JSON.stringify({ instance }));
+	return new Response(
+		JSON.stringify({
+			name: instance?.name,
+			enableRegistration: instance?.enableRegistration,
+			maintenance: instance?.maintenance
+		})
+	);
 };

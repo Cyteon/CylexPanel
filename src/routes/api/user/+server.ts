@@ -21,14 +21,20 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	let instance: any;
 
+	const bytes = new Uint8Array(48);
+	crypto.getRandomValues(bytes);
+	const secret = btoa(String.fromCharCode(...bytes));
+
 	if (instanceName) {
 		instance = new Instance({
 			name: instanceName,
-			enableRegistration: enableRegistration
+			enableRegistration: enableRegistration,
+			secret: secret
 		});
 	} else {
 		instance = new Instance({
-			enableRegistration: enableRegistration
+			enableRegistration: enableRegistration,
+			secret: secret
 		});
 	}
 

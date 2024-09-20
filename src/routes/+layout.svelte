@@ -54,7 +54,7 @@
 		res.then((res) => {
 			if (res.status === 200) {
 				res.json().then((data) => {
-					instance.set(data.instance);
+					instance.set(data);
 				});
 			}
 		});

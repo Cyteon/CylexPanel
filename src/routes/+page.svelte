@@ -4,6 +4,7 @@
 	import type { DataSession } from '$lib/types/Data';
 
 	import NavBar from '$lib/components/Navbar.svelte';
+	import ServerCard from '$lib/components/ServerCard.svelte';
 
 	let session: Writable<DataSession> | null = null;
 
@@ -22,17 +23,20 @@
 <body>
 	<NavBar />
 	<div class="glass flex-grow">
-		<div class="card">
-			<div class="flex flex-row">
-				<h1>Server name</h1>
-				<p class="ml-auto">0.0.0.0:1234</p>
-			</div>
-			<div>
-				<p class="text-sm">Server description</p>
-			</div>
-		</div>
-	</div></body
->
+		<ServerCard
+			name="Server name"
+			id="server-id"
+			ip="0.0.0.0"
+			port={1234}
+			description="Server description"
+			cpu="100%/200%"
+			ram="80% (8GB/10GB)"
+			disk="5GB/10GB"
+			node="EU-1"
+			status="online"
+		/>
+	</div>
+</body>
 
 <style>
 	body {
@@ -57,20 +61,5 @@
 		padding: 1rem;
 		margin: 0.5rem;
 		border-radius: 0.4rem;
-	}
-
-	.card {
-		padding: 1rem;
-		margin: 0.5 0rem;
-		width: 300px;
-		height: 150px;
-		border-radius: 0.4rem;
-
-		/* From https://css.glass */
-		background: rgba(10, 9, 9, 0.29);
-		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-		backdrop-filter: blur(4.4px);
-		-webkit-backdrop-filter: blur(4.4px);
-		border: 1px solid rgba(10, 9, 9, 0.39);
 	}
 </style>
