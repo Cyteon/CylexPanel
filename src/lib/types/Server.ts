@@ -15,15 +15,18 @@ export interface ServerDocument {
 	description: string;
 	node: string;
 	ports: number[];
+	suspended: boolean;
 	resources: ResourceDocument;
 }
 
 const ServerSchema = new Schema<ServerDocument>({
 	_id: { type: Number, required: false, default: 0 },
+	ownerId: { type: Number, required: true },
 	name: { type: String, required: true },
 	description: { type: String, required: true },
 	node: { type: String, required: true },
 	ports: { type: [Number], required: true },
+	suspended: { type: Boolean, required: true },
 	resources: {
 		ram: { type: Number, required: true },
 		cpu: { type: Number, required: true },

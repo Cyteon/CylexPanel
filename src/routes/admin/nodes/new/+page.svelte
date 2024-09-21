@@ -155,7 +155,7 @@
 			</div>
 		</div>
 
-		<p class="absolute top-4 right-4">Admin > Nodes > New</p>
+		<p class="absolute top-4 right-4 text-sm">Admin > Nodes > New</p>
 	</div>
 </body>
 

@@ -112,6 +112,6 @@
 				<Fa icon={faPlus} /> <span class="ml-1">Add Node</span>
 			</a>
 		</button>
-		<p class="absolute top-4 right-4">Admin > Nodes</p>
+		<p class="absolute top-4 right-4 text-sm">Admin > Nodes</p>
 	</div>
 </body>

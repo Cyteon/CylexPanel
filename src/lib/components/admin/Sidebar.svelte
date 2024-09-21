@@ -23,7 +23,7 @@
 <nav class="flex flex-col glass">
 	<h1 class="text-2xl font-bold mx-auto">{$instance?.name}</h1>
 
-	<hr />
+	<hr class="first-hr" />
 
 	<a href="/admin/settings" class="link"> <Fa icon={faWrench} /> <span>Settings</span> </a>
 
@@ -60,6 +60,7 @@
 	.link {
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		transition: all 0.4s;
 		padding: 0.5rem;
 	}
@@ -71,5 +72,28 @@
 
 	.link span {
 		margin-left: 0.5rem;
+		display: none;
+	}
+
+	h1 {
+		display: none;
+	}
+
+	.first-hr {
+		display: none;
+	}
+
+	@media (min-width: 768px) {
+		.link span {
+			display: block;
+		}
+
+		h1 {
+			display: block;
+		}
+
+		.first-hr {
+			display: block;
+		}
 	}
 </style>
