@@ -19,7 +19,7 @@
 		<h1>{name}</h1>
 		<aside class="absolute right-4 top-4 text-end">
 			<p>{`${ip}:${port}`}</p>
-			<p>{node}</p>
+			<p class="text-sm">{node}</p>
 		</aside>
 	</div>
 	<div>

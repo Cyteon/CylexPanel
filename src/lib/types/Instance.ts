@@ -5,14 +5,12 @@ export interface InstanceDocument {
 	name: string;
 	enableRegistration: boolean;
 	maintenance: boolean;
-	secret: string;
 }
 
 const InstanceSchema = new Schema<InstanceDocument>({
 	name: { type: String, required: false, default: 'CylexPanel' },
 	enableRegistration: { type: Boolean, required: false, default: false },
-	maintenance: { type: Boolean, required: false, default: false },
-	secret: { type: String, required: true }
+	maintenance: { type: Boolean, required: false, default: false }
 });
 
 const Instance =

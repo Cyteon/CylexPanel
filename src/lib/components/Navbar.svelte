@@ -29,7 +29,7 @@
 				</div>
 			</a>
 		{/if}
-		<a href="/user">
+		<a href="/account">
 			<div class="icon">
 				<Fa icon={faUser} />
 			</div>

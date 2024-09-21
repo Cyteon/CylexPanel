@@ -2,6 +2,7 @@ import { type RequestHandler, error } from '@sveltejs/kit';
 import { connectDB } from '$lib/db.server';
 import User from '$lib/types/User';
 import Session from '$lib/types/Session';
+import Instance from '$lib/types/Instance';
 import bcrypt from 'bcrypt';
 import { typeid } from 'typeid-js';
 
@@ -24,12 +25,16 @@ export const POST: RequestHandler = async ({ request }) => {
 		});
 	}
 
-	const id = typeid('user').toString();
+	const instance = await Instance.findOne({});
+	if (!instance?.enableRegistration) {
+		error(400, {
+			message: 'Registration is disabled'
+		});
+	}
 
 	const hashed = await bcrypt.hash(password, 12);
 
 	const user = new User({
-		_id: id,
 		email: email,
 		username: username,
 		password: hashed

@@ -5,16 +5,6 @@
 </body>
 
 <style>
-	body {
-		background-image: url('/static/bg.jpg');
-		background-size: cover;
-		color: white;
-
-		height: 100vh;
-		width: 100%;
-		display: flex;
-	}
-
 	div {
 		font-size: 4rem;
 		font-weight: bold;
