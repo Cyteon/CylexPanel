@@ -16,6 +16,7 @@ export interface ServerDocument {
 	node: string;
 	ports: number[];
 	suspended: boolean;
+	eggId: number;
 	resources: ResourceDocument;
 }
 
@@ -27,6 +28,7 @@ const ServerSchema = new Schema<ServerDocument>({
 	node: { type: String, required: true },
 	ports: { type: [Number], required: true },
 	suspended: { type: Boolean, required: true },
+	eggId: { type: Number, required: true },
 	resources: {
 		ram: { type: Number, required: true },
 		cpu: { type: Number, required: true },

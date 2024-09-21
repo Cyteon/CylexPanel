@@ -10,7 +10,8 @@
 		faNetworkWired,
 		faServer,
 		faUser,
-		faPersonRunning
+		faPersonRunning,
+		faEgg
 	} from '@fortawesome/free-solid-svg-icons';
 
 	let instance: Writable<InstanceDocument> | null = null;
@@ -32,6 +33,10 @@
 	<a href="/admin/nodes" class="link"> <Fa icon={faNetworkWired} /> <span>Nodes</span> </a>
 	<a href="/admin/servers" class="link"> <Fa icon={faServer} /> <span>Servers</span> </a>
 	<a href="/admin/users" class="link"> <Fa icon={faUser} /> <span>Users</span> </a>
+
+	<hr />
+
+	<a href="/admin/eggs" class="link"> <Fa icon={faEgg} /> <span>Eggs</span> </a>
 
 	<div class="mt-auto">
 		<hr />
