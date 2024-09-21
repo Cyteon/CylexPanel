@@ -34,6 +34,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.6.0",
+		"@tanstack/svelte-table": "^8.20.5",
 		"@types/bcrypt": "^5.0.2",
 		"bcrypt": "^5.1.1",
 		"mongoose": "^8.6.2",

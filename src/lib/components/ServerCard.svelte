@@ -58,6 +58,12 @@
 
 		display: flex;
 		flex-direction: column;
+
+		transition: all 0.4s;
+	}
+
+	.card:hover {
+		border: 1px solid rgba(255, 255, 255, 0.7); /* Lighter, almost white */
 	}
 
 	.resources p {

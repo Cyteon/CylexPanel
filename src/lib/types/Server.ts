@@ -1,17 +1,16 @@
 import mongoose, { Schema } from 'mongoose';
 import { getNextSequence } from './Counter';
 
-export interface NodeDocument {
+export interface ServerDocument {
 	_id: number;
+	ownerId: number;
 	name: string;
-	location: string;
-	fqdn: string;
-	port: number;
-	adminKey: string;
-	secure: boolean;
+	description: string;
+	node: string;
+	ports: number[];
 }
 
-const NodeSchema = new Schema<NodeDocument>({
+const ServerSchema = new Schema<ServerDocument>({
 	_id: { type: Number, required: false, default: 0 },
 	name: { type: String, required: true },
 	location: { type: String, required: true },
@@ -21,13 +20,13 @@ const NodeSchema = new Schema<NodeDocument>({
 	secure: { type: Boolean, required: true }
 });
 
-NodeSchema.pre('save', async function (next) {
+ServerSchema.pre('save', async function (next) {
 	if (this.isNew) {
-		this._id = await getNextSequence('node');
+		this._id = await getNextSequence('server');
 	}
 	next();
 });
 
-const Node = mongoose.models?.node || mongoose.model<NodeDocument>('node', NodeSchema);
+const Server = mongoose.models?.server || mongoose.model<ServerDocument>('server', ServerSchema);
 
-export default Node;
+export default server;

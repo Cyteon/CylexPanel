@@ -20,8 +20,8 @@
 	session = getContext<Writable<DataSession>>('session');
 </script>
 
-<nav class="flex flex-col">
-	<h1 class="text-3xl font-bold mx-auto">{$instance?.name}</h1>
+<nav class="flex flex-col glass">
+	<h1 class="text-2xl font-bold mx-auto">{$instance?.name}</h1>
 
 	<hr />
 
@@ -41,13 +41,6 @@
 
 <style>
 	nav {
-		/* From https://css.glass */
-		background: rgba(30, 30, 30, 0.3);
-		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-		backdrop-filter: blur(5.6px);
-		-webkit-backdrop-filter: blur(5.6px);
-		border: 1px solid rgba(30, 30, 30, 0.3);
-
 		padding: 0.5rem;
 		margin: 0.5rem;
 		border-radius: 0.4rem;

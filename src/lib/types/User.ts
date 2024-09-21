@@ -11,7 +11,7 @@ export interface UserDocument {
 }
 
 const UserSchema = new Schema<UserDocument>({
-	_id: { type: Number, required: false, default: 0 },
+	_id: { type: Number, default: 0 },
 	email: { type: String, required: true },
 	username: { type: String, required: true },
 	password: { type: String, required: true },

@@ -29,6 +29,15 @@
 
 		if (!token) {
 			session.set({ authenticated: false, user: null });
+
+			if (!data?.user?.admin) {
+				if (
+					window.location.pathname.startsWith('/admin') &&
+					window.location.pathname != '/admin/setup'
+				) {
+					window.location.href = '/';
+				}
+			}
 		} else {
 			const res = await fetch('/api/user/verify', {
 				method: 'POST',
@@ -42,6 +51,12 @@
 				var data = await res.json();
 
 				session.set({ authenticated: true, user: data.user });
+
+				if (!data.user.admin) {
+					if (window.location.pathname.startsWith('/admin')) {
+						window.location.href = '/';
+					}
+				}
 			} else {
 				session.set({ authenticated: false, user: null });
 				setCookie('token', '', { expires: -1 });
