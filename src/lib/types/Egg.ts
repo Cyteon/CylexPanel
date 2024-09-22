@@ -21,9 +21,9 @@ export interface EggDocument {
 	nestId: number;
 	name: string;
 	description: string;
-	startupCommand: string;
-	stopCommand: string;
-	dockerImages: string[];
+	startup: string;
+	stop: string;
+	dockerImages: Map<string, string>;
 	install: EggInstallDocument;
 	variables?: EggVariableDocument[];
 }
@@ -33,9 +33,9 @@ const EggSchema = new Schema<EggDocument>({
 	nestId: { type: Number, required: true },
 	name: { type: String, required: true },
 	description: { type: String, required: true },
-	startupCommand: { type: String, required: true },
-	stopCommand: { type: String, required: true },
-	dockerImages: { type: [String], required: true },
+	startup: { type: String, required: true },
+	stop: { type: String, required: true },
+	dockerImages: { type: Map, of: String, required: true },
 	install: {
 		script: { type: String, required: true },
 		container: { type: String, required: true }
