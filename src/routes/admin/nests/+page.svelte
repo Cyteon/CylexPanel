@@ -9,13 +9,13 @@
 		type ColumnDef
 	} from '@tanstack/svelte-table';
 	import { onMount } from 'svelte';
-	import type { NodeDocument } from '$lib/types/Node';
+	import type { NestDocument } from '$lib/types/Nest';
 	import { getCookie } from 'typescript-cookie';
 
 	import Fa from 'svelte-fa';
 	import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-	const columns: ColumnDef<NodeDocument>[] = [
+	const columns: ColumnDef<NestDocument>[] = [
 		{
 			header: 'ID',
 			accessorKey: '_id'
@@ -30,11 +30,11 @@
 		}
 	];
 
-	var nodes: NodeDocument[] = [];
+	var nests: NestDocument[] = [];
 
 	let table = createSvelteTable({
 		columns: columns,
-		data: nodes,
+		data: nests,
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel()
 	});
@@ -49,11 +49,11 @@
 		const data = await res.json();
 
 		if (res.ok) {
-			nodes = data.nodes;
+			nests = data.nests;
 
 			table = createSvelteTable({
 				columns: columns,
-				data: nodes,
+				data: nests,
 				getCoreRowModel: getCoreRowModel(),
 				getSortedRowModel: getSortedRowModel()
 			});

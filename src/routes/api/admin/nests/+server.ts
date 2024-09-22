@@ -18,9 +18,9 @@ export const GET: RequestHandler = async ({ request }) => {
 		});
 	}
 
-	const nodes = await Nest.find();
+	const nests = await Nest.find();
 
-	return new Response(JSON.stringify({ nodes: nodes }));
+	return new Response(JSON.stringify({ nests: nests }));
 };
 
 export const PUT: RequestHandler = async ({ request }) => {
