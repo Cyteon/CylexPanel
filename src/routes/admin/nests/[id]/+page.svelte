@@ -72,7 +72,8 @@
 <body class="flex flex-row">
 	<Sidebar />
 	<div class="glass flex-grow">
-		<h1 class="text-2xl mb-4 font-bold">Nest: {nest?.name}</h1>
+		<h1 class="text-2xl font-bold">Nest: {nest?.name}</h1>
+		<p class="mb-4">{nest?.description}</p>
 		{#if eggs.length > 0}
 			<table class="table w-full">
 				<thead>
@@ -108,8 +109,8 @@
 		{:else}
 			<p>No eggs found.</p>
 		{/if}
-		<button class="bg-blue-500 p-2 rounded-md mt-4 transition-all duration-500 hover:bg-blue-600">
-			<a href="/admin/nests/new" class="flex items-center">
+		<button class="bg-blue-500 p-2 rounded-md mt-5 transition-all duration-500 hover:bg-blue-600">
+			<a href={`/admin/nests/${data.id}/new`} class="flex items-center">
 				<Fa icon={faPlus} /> <span class="ml-1">Add Egg</span>
 			</a>
 		</button>

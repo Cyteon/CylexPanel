@@ -1,51 +1,76 @@
 import mongoose, { Schema } from 'mongoose';
 import { getNextSequence } from './Counter';
 
-export interface EggInstallDocument {
-	script: string;
-	container: string;
-}
-
-export interface EggVariableDocument {
+export interface EggVariable {
 	name: string;
 	description: string;
-	key: string;
-	value: string;
-	required: boolean;
-	editable: boolean;
-	viewable: boolean;
+	env_variable: string;
+	default_value: string | null;
+	user_viewable: boolean;
+	user_editable: boolean;
+	field_type: string;
 }
 
 export interface EggDocument {
 	_id: number;
 	nestId: number;
+	/* We use pterodactyl eggs */
+	_comment: string;
+	meta: {
+		version: string;
+		update_url: string | null;
+	};
+	exported_at: string;
 	name: string;
+	author: string;
 	description: string;
+	docker_images: Map<string, string>;
 	startup: string;
-	stop: string;
-	dockerImages: Map<string, string>;
-	install: EggInstallDocument;
-	variables?: EggVariableDocument[];
+	config: {
+		stop: string;
+	};
+	scripts: {
+		installation: {
+			script: string;
+			container: string;
+			entrypoint: string;
+		};
+	};
+	variables: EggVariable[];
 }
 
 const EggSchema = new Schema<EggDocument>({
 	_id: { type: Number, required: false, default: 0 },
 	nestId: { type: Number, required: true },
+	_comment: { type: String, required: true },
+	meta: {
+		version: { type: String, required: true },
+		update_url: { type: String, required: false, default: null }
+	},
+	exported_at: { type: String, required: true },
 	name: { type: String, required: true },
 	description: { type: String, required: true },
+	docker_images: { type: Object, required: true },
 	startup: { type: String, required: true },
-	stop: { type: String, required: true },
-	dockerImages: { type: Map, of: String, required: true },
-	install: {
-		script: { type: String, required: true },
-		container: { type: String, required: true }
+	config: {
+		stop: { type: String, required: true }
+	},
+	scripts: {
+		installation: {
+			script: { type: String, required: true },
+			container: { type: String, required: true },
+			entrypoint: { type: String, required: true }
+		}
 	},
 	variables: [
 		{
 			name: { type: String, required: true },
 			description: { type: String, required: true },
-			key: { type: String, required: true },
-			value: { type: String, required: true }
+			env_variable: { type: String, required: true },
+			default_value: { type: String, required: false, default: null },
+			user_viewable: { type: Boolean, required: true },
+			user_editable: { type: Boolean, required: true },
+			field_type: { type: String, required: true }
 		}
 	]
 });
