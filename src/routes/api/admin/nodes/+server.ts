@@ -1,7 +1,4 @@
 import { type RequestHandler, error } from '@sveltejs/kit';
-import { connectDB } from '$lib/db.server';
-import Session from '$lib/types/Session';
-import User from '$lib/types/User';
 import Node from '$lib/types/Node';
 import { verifyRequest } from '$lib/api/verifyRequest.server';
 

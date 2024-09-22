@@ -11,14 +11,13 @@
 		faServer,
 		faUser,
 		faPersonRunning,
-		faEgg
+		faBoxesStacked
 	} from '@fortawesome/free-solid-svg-icons';
 
 	let instance: Writable<InstanceDocument> | null = null;
 	let session: Writable<DataSession> | null = null;
 
 	instance = getContext<Writable<InstanceDocument>>('instance');
-	session = getContext<Writable<DataSession>>('session');
 </script>
 
 <nav class="flex flex-col glass">
@@ -36,7 +35,7 @@
 
 	<hr />
 
-	<a href="/admin/eggs" class="link"> <Fa icon={faEgg} /> <span>Eggs</span> </a>
+	<a href="/admin/nests" class="link"> <Fa icon={faBoxesStacked} /> <span>Nests</span> </a>
 
 	<div class="mt-auto">
 		<hr />
